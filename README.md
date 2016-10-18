@@ -51,3 +51,8 @@
 > tag: cu [String array]
 
 > firends [String array] (this array Contains ONLY inherence id)
+
+# if use social login
+* twitter(get) /auth/tw/token?oauth_token=<token>&oauth_token_secret=<token_secret>&user_id=<user_id>
+* facebook(get) /auth/fb/token?access_token=<token>
+
