@@ -17,6 +17,26 @@
 
     HTTP 403: Params Missing
     
+
+* POST /auth/reg : User Register
+
+> Params
+
+    userid : User's ID [String]
+
+    pw : User's Password [String]
+
+    username : User's Name [String]
+
+
+> Response
+
+    HTTP 200 : User
+
+    HTTP 300 : already exists
+
+    HTTP 400 : DB Error
+    
 ### User
 > id: user inherence id [Number]
 
