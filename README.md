@@ -123,8 +123,3 @@
 > tag: cu [String array]
 
 > firends: [{firend_id: [String], profile_image: [String]}] [JSON array]
-
-<<<<<<< HEAD
-
-=======
->>>>>>> e0dcd6ba728764c2bd61410f6d2c380e657f379f
