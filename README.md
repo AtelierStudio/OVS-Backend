@@ -17,6 +17,98 @@
 
     HTTP 403: Params Missing
     
+
+* POST /auth/reg : User Register
+
+> Params
+
+    userid : User's ID [String]
+
+    pw : User's Password [String]
+
+    username : User's Name [String]
+
+
+> Response
+
+    HTTP 200 : User
+
+    HTTP 300 : already exists
+
+    HTTP 400 : DB Error
+
+* POST /auth/login : User Login
+
+> Params
+
+    userid : User's ID [String]
+
+    pw : User's   Password [String]
+
+> Response
+
+    HTTP 200 : User
+
+    HTTP 400 : No user
+
+    HTTP 401 : ID / Password Incorrect
+
+* POST /auth/auto : Auto Login
+
+> Params
+
+    token : token [String]
+
+> Response
+
+    HTTP 200 : UserID and token or apikey
+
+    HTTP 401 : Access Denied
+
+
+* POST /auth/destroy
+
+> Params
+
+    token : token [String]
+
+> Response
+
+    HTTP 200 : good bye
+
+    HTTP 401 : not found
+    
+    HTTP 409 : DB ERROR
+    
+* GET /auth/fb/token
+
+> Params
+
+    access_token : access token
+
+
+> Response
+
+    HTTP 200 : send user
+
+    HTTP 400 : DB Error
+    
+* GET /auth/tw/token : send tw token 
+
+> Params
+
+    oauth_token : oauth_token
+    
+    oauth_token_secret: oauth_token_secret
+    
+    user_id: user_id
+
+> Response
+
+    HTTP 200 : send user
+
+    HTTP 400 : DB Error 
+
 ### User
 > id: user inherence id [Number]
 
@@ -30,4 +122,6 @@
 
 > tag: cu [String array]
 
-> firends [String array] (this array Contains ONLY inherence id)
+> firends: [{firend_id: [String], profile_image: [String]}] [JSON array]
+
+

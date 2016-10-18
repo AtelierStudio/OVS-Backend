@@ -41,7 +41,7 @@ router.post('/login', function(req, res, next) {
         if (user != null) {
             if (user.userid === req.body.userid && user.pw === req.body.pw) {
                 var obj = {
-                    "userid": user.userid,
+                    "user_id": user.userid,
                     "name": user.name,
                     "token": user.token
                 };
@@ -89,8 +89,8 @@ passport.use(new FacebookTokenStrategy({
 
         if (!user) {
             user = new Users({
-                userid: profile.id,
-                name: profile.displayName,
+                user_id: profile.id,
+                nick_name: profile.displayName,
                 profile_image: profile.photos[0].value,
                 token: rndString.generate()
             });
@@ -115,8 +115,8 @@ passport.use(new FacebookTokenStrategy({
 }));
 
 passport.use(new TwitterTokenStrategy({
-    consumerKey: "SvRMQBeHtW8aIZVYQZnrxnorN",
-    consumerSecret: "At91tGX1v5MMwwUvqzNUgjvpZrnCB6O41VehdJASHs86bieaFd",
+    consumerKey: "Zou3zCKnCOR1xs5kJYTIz53TK",
+    consumerSecret: "cWhEQmj6crVE9RNsfsGmgW5QcHGlUNZiw0bT5IfKAlXbkFPKGh",
 }, function(accessToken, refreshToken, profile, done) {
     Users.findOne({'userid': profile.id}, function(err, user) {
         if (err) {
@@ -125,8 +125,8 @@ passport.use(new TwitterTokenStrategy({
 
         if (!user) {
             user = new Users({
-                userid: profile.id,
-                name: profile.displayName,
+                user_id: profile.id,
+                nick_name: profile.displayName,
                 profile_image: profile._json.profile_image_url,
                 token: rndString.generate()
             });
@@ -176,24 +176,6 @@ router.get('/fb/callback', passport.authenticate('facebook-token', {
     successRedirect: '/',
     failureRedirect: '/'
 }));
-
-router.post('/register', function(req, res) {
-    users = new Users({
-        id: req.param('user_id'),
-        password: req.param('password'),
-        api_token: randomString.generate(15),
-        user_type: "false"
-    });
-
-    users.save(function(err) {
-        if (err) {
-            throw err;
-        } else {
-            console.log("user register : " + user);
-            res.send(200, user);
-        }
-    });
-});
 
 router.post('/destroy', function(req, res){
   var token = req.body.token;
