@@ -228,6 +228,51 @@
 
     HTTP 400 : DB Error 
 
+* POST /board/write
+
+> Params
+
+    token: writer token
+    
+    contents: board content
+    
+    tourid: (DB Tours id) mt_00 is mountain, tr_00 is trail, lm_00 is landmark, at_00
+    
+    file: file upload
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
+
+
+* POST /board/like
+
+> Params
+
+    boardid: boardid
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
+
+* POST /board/dislike
+
+> Params
+
+    boardid: boardid
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
 ### User
 > id: user inherence id [Number]
 
