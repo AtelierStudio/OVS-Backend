@@ -43,11 +43,12 @@ var TourSchema = new mongoose.Schema({
 
 var BoardSchema = new mongoose.Schema({
   id: {type: String},
-  owner: {type: String},
-  summary: {type: String},
+  board_writer: {type: String},
+  writer_img: {type: String},
+  date: {type: Date},
+  contents: {type: String},
   like: {type: String},
   img_url: {type: String},
-  board_key: {type: String},
 
   comments:[{
       writer: {type: String},
@@ -63,6 +64,7 @@ Tour = mongoose.model('tourists', TourSchema);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var board = require('./routes/board');
 var auth = require('./routes/auth');
 var img = require('./routes/img');
 
@@ -82,6 +84,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/board', board);
 app.use('/auth', auth);
 app.use('/img', img);
 
