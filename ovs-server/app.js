@@ -6,25 +6,48 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/ovs');
+mongoose.Promise = global.Promise;
 
 var UserSchema = new mongoose.Schema({
     id:{type: Number},
     token:{type: String},
     user_id:{type: String, required: true, unique: true},
+    nick_name:{type: String},
     pw:{type: String},
-    profile_image: {type: String},
-
-    firends: [{
-       firend_id: {type: String},
-       profile_image: {type: String},
-    }],
+    profile_image: {type: String, default: "http://iwin247.net:3000/img/user/default"},
+    
+    favorit: [String],
+    visit: [{
+       name: {type: String},
+       name_eng: {type: String},
+       img_url: {type: String},
+       star: {type: Number, max: 5}
+    }]
 });
 
+var TourSchema = new mongoose.Schema({
+   id: {type: String},
+   name: {type: String},
+   name_eng: {type: String},
+   adress: {type: String},
+   gps: {type: String},
+   map: {type: String},
+   phoneNum: {type: String},
+   info: {type: String},
+   navigation: {type: String},
+   img_url: {type: String},
+   restaurant: {type: String},
+   tag: [String]
+});
+
+
 Users = mongoose.model('users', UserSchema);
+Tour = mongoose.model('tourists', TourSchema);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var img = require('./routes/img');
 
 var app = express();
 
@@ -43,6 +66,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/img', img);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
