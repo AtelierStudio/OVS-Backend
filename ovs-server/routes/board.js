@@ -86,12 +86,49 @@ router.post('/addBoard', function(req, res) {
 
 
 router.post('/like', function(req, res) {
+  var boardid = req.body.boardid;
 
+  Board.findOne({boardid: boardid}, function(err, board){
+    if(err) return res.status(409).send("DB error");
+    else if(board){
+      var like = board.like;
+      ++like;
+      Board.update({boardid: boardid}, {like: like},function(err, result){
+        if(err) return res.status(409).send("DB error");
+        else if(result){
+          return res.status(200).send(board);
+        }else{
+          return res.status(405).send("not found");
+        }
+      });
+    }else{
+      return res.status(405).send("no board");
+    }
+  });
 });
 
 
 router.post('/dislike', function(req, res) {
+  var boardid = req.body.boardid;
 
+  Board.findOne({boardid: boardid}, function(err, board){
+    if(err) return res.status(409).send("DB error");
+
+    else if(board){
+      var like = board.like;
+      --like;
+      Board.update({boardid: boardid},{like: like},function(err, result){
+        if(err) return res.status(409).send("DB error");
+        else if(result){
+          return res.status(200).send(board);
+        }else{
+          return res.status(405).send("not found");
+        }
+      });
+    }else{
+      return res.status(405).send("no boardx");
+    }
+  });
 });
 
 module.exports = router;

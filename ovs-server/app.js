@@ -17,6 +17,7 @@ var UserSchema = new mongoose.Schema({
     profile_image: {type: String, default: "http://iwin247.net:3000/img/user/default"},
 
     favorit: [String],
+
     visit: [{
        name: {type: String},
        name_eng: {type: String},
@@ -42,12 +43,12 @@ var TourSchema = new mongoose.Schema({
 });
 
 var BoardSchema = new mongoose.Schema({
-  id: {type: String},
+  boardid: {type: String},
   board_writer: {type: String},
   writer_img: {type: String},
   date: {type: Date},
   contents: {type: String},
-  like: {type: String},
+  like: {type: Number, min: 0, default: 0},
   img_url: {type: String},
 
   comments:[{
@@ -59,7 +60,7 @@ var BoardSchema = new mongoose.Schema({
 });
 
 Users = mongoose.model('users', UserSchema);
-Boards = mongoose.model('boards', BoardSchema);
+Board = mongoose.model('boards', BoardSchema);
 Tour = mongoose.model('tourists', TourSchema);
 
 var routes = require('./routes/index');
