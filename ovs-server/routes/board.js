@@ -42,7 +42,7 @@ var upload = function(req, res, boardid) {
 
 
 
-router.post('/addBoard', function(req, res) {
+router.post('/write', function(req, res) {
     var boardid = rndString.generate();
     upload(req, res, boardid).then(function(file) {
         var token = req.body.token;
