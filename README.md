@@ -241,7 +241,6 @@
 
 > tag: cu [String array]
 
-> firends: [{firend_id: [String], profile_image: [String]}] [JSON array]
 
 ## Tour
 > id: mt_00 is mountain, tr_00 is trail, lm_00 is landmark, at_00 is attraction [String]
@@ -267,3 +266,31 @@
 > restaurant: restaurant name of around tour place [String]
 
 > tag: tour place tags [String array]
+
+> board_ids: board ids is use for tour place board
+
+
+## Board
+> id: board id [String]
+
+> board_writer: writer name [String]
+
+> writer_img: writer img url [String]
+
+> summary: board summary [String]
+
+> like: [Number]
+
+> img_url: {type: String}
+
+> comments [{
+
+>> writer: {type: String}
+
+>> date: {type: Date}
+
+>> summary: {type: String}
+
+>> profile_image: {type: String}
+
+> }]
