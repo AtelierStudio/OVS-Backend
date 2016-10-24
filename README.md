@@ -245,14 +245,25 @@
 
 ## Tour
 > id: mt_00 is mountain, tr_00 is trail, lm_00 is landmark, at_00 is attraction [String]
+
 > name: place name kor [String]
+
 > name_eng: place name eng [String]
+
 > adress: place adress [String]
+
 > gps: place gps latitude is in gps[0] longtitude is in gps[1] (위도는 0번째 경도는 1번째) [String array]
+
 > map: map is url [String]
+
 > phoneNum: phoneNumber of tour place [String]
+
 > info: tour place infomation [String]
+
 > navigation: naver navigation url (IDK WTF is this) [String]
-> img_url: place image url,
+
+> img_url: place image url
+
 > restaurant: restaurant name of around tour place [String]
+
 > tag: tour place tags [String array]
