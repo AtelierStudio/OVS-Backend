@@ -37,15 +37,17 @@ var TourSchema = new mongoose.Schema({
    navigation: {type: String},
    img_url: {type: String},
    restaurant: {type: String},
-   tag: [String]
+   tag: [String],
+   board_ids: [String],
 });
 
 var BoardSchema = new mongoose.Schema({
   id: {type: String},
   owner: {type: String},
   summary: {type: String},
-  img_url: {type: String},
   like: {type: String},
+  img_url: {type: String},
+  board_key: {type: String},
 
   comments:[{
       writer: {type: String},
@@ -56,6 +58,7 @@ var BoardSchema = new mongoose.Schema({
 });
 
 Users = mongoose.model('users', UserSchema);
+Boards = mongoose.model('boards', BoardSchema);
 Tour = mongoose.model('tourists', TourSchema);
 
 var routes = require('./routes/index');
