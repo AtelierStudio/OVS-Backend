@@ -15,7 +15,7 @@ var UserSchema = new mongoose.Schema({
     nick_name:{type: String},
     pw:{type: String},
     profile_image: {type: String, default: "http://iwin247.net:3000/img/user/default"},
-    
+
     favorit: [String],
     visit: [{
        name: {type: String},
@@ -40,6 +40,20 @@ var TourSchema = new mongoose.Schema({
    tag: [String]
 });
 
+var BoardSchema = new mongoose.Schema({
+  id: {type: String},
+  owner: {type: String},
+  summary: {type: String},
+  img_url: {type: String},
+  like: {type: String},
+
+  comments:[{
+      writer: {type: String},
+      date: {type: Date},
+      summary: {type: String},
+      profile_image: {type: String},
+  }]
+});
 
 Users = mongoose.model('users', UserSchema);
 Tour = mongoose.model('tourists', TourSchema);
