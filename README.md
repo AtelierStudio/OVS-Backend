@@ -17,7 +17,8 @@
 
     HTTP 412: Params Missing or params error
     
- * POST /auth/reg : User Register
+
+* POST /auth/reg : User Register
 
 > Params
 
@@ -227,6 +228,51 @@
 
     HTTP 400 : DB Error 
 
+* POST /board/write
+
+> Params
+
+    token: writer token
+    
+    contents: board content
+    
+    tourid: (DB Tours id) mt_00 is mountain, tr_00 is trail, lm_00 is landmark, at_00
+    
+    file: file upload
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
+
+
+* POST /board/like
+
+> Params
+
+    boardid: boardid
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
+
+* POST /board/dislike
+
+> Params
+
+    boardid: boardid
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
 ### User
 > id: user inherence id [Number]
 
@@ -240,4 +286,56 @@
 
 > tag: cu [String array]
 
-> firends: [{firend_id: [String], profile_image: [String]}] [JSON array]
+
+## Tour
+> id: mt_00 is mountain, tr_00 is trail, lm_00 is landmark, at_00 is attraction [String]
+
+> name: place name kor [String]
+
+> name_eng: place name eng [String]
+
+> adress: place adress [String]
+
+> gps: place gps latitude is in gps[0] longtitude is in gps[1] (위도는 0번째 경도는 1번째) [String array]
+
+> map: map is url [String]
+
+> phoneNum: phoneNumber of tour place [String]
+
+> info: tour place infomation [String]
+
+> navigation: naver navigation url (IDK WTF is this) [String]
+
+> img_url: place image url
+
+> restaurant: restaurant name of around tour place [String]
+
+> tag: tour place tags [String array]
+
+> board_ids: board ids is use for tour place board
+
+
+## Board
+> id: board id [String]
+
+> board_writer: writer name [String]
+
+> writer_img: writer img url [String]
+
+> summary: board summary [String]
+
+> like: [Number]
+
+> img_url: {type: String}
+
+> comments [{
+
+>> writer: {type: String}
+
+>> date: {type: Date}
+
+>> summary: {type: String}
+
+>> profile_image: {type: String}
+
+> }]

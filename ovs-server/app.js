@@ -15,8 +15,9 @@ var UserSchema = new mongoose.Schema({
     nick_name:{type: String},
     pw:{type: String},
     profile_image: {type: String, default: "http://iwin247.net:3000/img/user/default"},
-    
+
     favorit: [String],
+
     visit: [{
        name: {type: String},
        name_eng: {type: String},
@@ -37,15 +38,34 @@ var TourSchema = new mongoose.Schema({
    navigation: {type: String},
    img_url: {type: String},
    restaurant: {type: String},
-   tag: [String]
+   tag: [String],
+   board_ids: [String],
 });
 
+var BoardSchema = new mongoose.Schema({
+  boardid: {type: String},
+  board_writer: {type: String},
+  writer_img: {type: String},
+  date: {type: Date},
+  contents: {type: String},
+  like: {type: Number, min: 0, default: 0},
+  img_url: {type: String},
+
+  comments:[{
+      writer: {type: String},
+      date: {type: Date},
+      summary: {type: String},
+      profile_image: {type: String},
+  }]
+});
 
 Users = mongoose.model('users', UserSchema);
+Board = mongoose.model('boards', BoardSchema);
 Tour = mongoose.model('tourists', TourSchema);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var board = require('./routes/board');
 var auth = require('./routes/auth');
 var img = require('./routes/img');
 
@@ -65,6 +85,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/board', board);
 app.use('/auth', auth);
 app.use('/img', img);
 
