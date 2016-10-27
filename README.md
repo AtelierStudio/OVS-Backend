@@ -299,6 +299,16 @@
 
     HTTP 400 : DB Error 
     
+    
+* POST /info
+
+
+> Response
+
+    HTTP 200 : return tour id and gps
+
+    HTTP 400 : DB Error 
+    
 ### User
 > id: user inherence id [Number]
 
