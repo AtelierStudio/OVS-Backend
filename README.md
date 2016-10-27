@@ -322,7 +322,7 @@
 
 > adress: place adress [String]
 
-> gps: place gps latitude is in gps[0] longtitude is in gps[1] (위도는 0번째 경도는 1번째) [String array]
+> gps: place gps latitude is in gps[0] longtitude is in gps[1] ( 위도는 0번째 경도는 1번째 ) [String array]
 
 > map: map is url [String]
 
