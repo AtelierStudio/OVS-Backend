@@ -68,6 +68,8 @@ var search = require('./routes/search');
 var users = require('./routes/users');
 var board = require('./routes/board');
 var auth = require('./routes/auth');
+var cate = require('./routes/cate');
+var info = require('./routes/info');
 var img = require('./routes/img');
 
 var app = express();
@@ -89,6 +91,8 @@ app.use('/users', users);
 app.use('/board', board);
 app.use('/search', search);
 app.use('/auth', auth);
+app.use('/cate', cate);
+app.use('/info', info);
 app.use('/img', img);
 
 // catch 404 and forward to error handler
