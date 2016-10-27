@@ -273,6 +273,32 @@
 
     HTTP 400 : DB Error 
     
+* POST /search/tag
+
+> Params
+
+    tag : tag String
+
+> Response
+
+    HTTP 200 : result
+    
+    HTTP 400 : DB Error 
+    
+    
+    
+* POST /search/user
+
+> Params
+
+    name : username
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
+    
 ### User
 > id: user inherence id [Number]
 
