@@ -64,6 +64,7 @@ Board = mongoose.model('boards', BoardSchema);
 Tour = mongoose.model('tourists', TourSchema);
 
 var routes = require('./routes/index');
+var search = require('./routes/search');
 var users = require('./routes/users');
 var board = require('./routes/board');
 var auth = require('./routes/auth');
@@ -86,6 +87,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/board', board);
+app.use('/search', search);
 app.use('/auth', auth);
 app.use('/img', img);
 
