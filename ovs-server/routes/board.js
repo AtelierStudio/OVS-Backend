@@ -52,7 +52,7 @@ router.post('/write', function(req, res) {
 
         Users.findOne({token: token}, function(err, result) {
             if (err) {
-                return res.status(406).send("DB error");
+                return res.status(409).send("DB error");
             } else if (result) {
 
                 var board = new Board({
