@@ -47,10 +47,11 @@ router.post('/getInfo', function(req, res) {
     Users.find({token: token}, function(err, user){
         if(err) res.sendStatus(405);
         if(user){
+            
              res.status(200).send(user);
         }else{
              res.status(412).send("no user");
-        }        
+        }
     });
 });
 
