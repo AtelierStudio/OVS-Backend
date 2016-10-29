@@ -40,7 +40,7 @@ var TourSchema = new mongoose.Schema({
    restaurant: {type: String},
    tag: [String],
    board_ids: [String],
-   like: {type: Number, default: 0}
+   like: {type: Number, min: 0, default: 0}
 });
 
 var BoardSchema = new mongoose.Schema({
