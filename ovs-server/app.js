@@ -62,12 +62,7 @@ var BoardSchema = new mongoose.Schema({
 
 var RecommendSchema = new mongoose.Schema({
   date: {type: String, unique: true},
-  recommends: [{
-    name: {type: String},
-    name_eng: {type: String},
-    likes: {type: Number},
-    board: {type: Number}
-  }]
+  list: [String]
 });
 
 Users = mongoose.model('users', UserSchema);
