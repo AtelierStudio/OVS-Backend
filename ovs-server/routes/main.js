@@ -41,6 +41,7 @@ router.post('/', function(req, res, next) {
                       for (var j = 0; j < tour.length; j++) {
                         if(rec.list[i] == tours[j].id){
                           process.push(tours[j]);
+                          break;
                         }
                       }
                     }
@@ -105,6 +106,7 @@ router.post('/', function(req, res, next) {
                                                 for (var j = 0; j < tour.length; j++) {
                                                     if (month.list[i] == tours[j].id) {
                                                         process.push(tours[j]);
+                                                        break;
                                                     }
                                                 }
                                             }

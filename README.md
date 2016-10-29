@@ -11,9 +11,9 @@
 
     HTTP 200: Success
 
-    HTTP 400: DB error
-
     HTTP 405: Bad Request
+    
+    HTTP 409: DB error
 
     HTTP 412: Params Missing or params error
     
@@ -35,7 +35,7 @@
 
     HTTP 300 : already exists
 
-    HTTP 400 : DB Error
+    HTTP 409 : DB Error
 
 * POST /auth/login : User Login
 
@@ -315,7 +315,48 @@
 
     HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
 
-    HTTP 400 : DB Error 
+    HTTP 409 : DB Error 
+    
+    
+* POST /tour
+
+> Params
+
+    id : tour id
+
+> Response
+
+    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
+
+    HTTP 409 : DB Error 
+    
+ * POST /tour/like
+
+> Params
+
+    id : tour id
+    
+    token : user token
+
+> Response
+
+    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
+
+    HTTP 409 : DB Error 
+
+ * POST /tour/dislike
+
+> Params
+
+    id : tour id
+    
+    token : user token
+
+> Response
+
+    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
+
+    HTTP 409 : DB Error 
     
 ### User
 > id: user inherence id [Number]
