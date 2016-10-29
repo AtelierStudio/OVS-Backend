@@ -40,6 +40,8 @@ var TourSchema = new mongoose.Schema({
    restaurant: {type: String},
    tag: [String],
    board_ids: [String],
+   like: {type: Number},
+   boards: [String]
 });
 
 var BoardSchema = new mongoose.Schema({
@@ -59,9 +61,17 @@ var BoardSchema = new mongoose.Schema({
   }]
 });
 
+var RecommendSchema = new mongoose.Schema({
+  name: {type: String},
+  name_eng: {type: String},
+  likes: {type: Number},
+  board: {type: Number}
+});
+
 Users = mongoose.model('users', UserSchema);
 Board = mongoose.model('boards', BoardSchema);
 Tour = mongoose.model('tourists', TourSchema);
+Recommend = mongoose.model('recommeds', RecommendSchema);
 
 var routes = require('./routes/index');
 var search = require('./routes/search');
@@ -70,6 +80,7 @@ var board = require('./routes/board');
 var auth = require('./routes/auth');
 var cate = require('./routes/cate');
 var info = require('./routes/info');
+var tour = require('./routes/tour');
 var img = require('./routes/img');
 
 var app = express();
@@ -93,6 +104,7 @@ app.use('/search', search);
 app.use('/auth', auth);
 app.use('/cate', cate);
 app.use('/info', info);
+app.use('/tour', tour);
 app.use('/img', img);
 
 // catch 404 and forward to error handler
