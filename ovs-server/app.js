@@ -9,21 +9,21 @@ mongoose.connect('mongodb://localhost:27017/ovs');
 mongoose.Promise = global.Promise;
 
 var UserSchema = new mongoose.Schema({
-    id:{type: Number},
-    token:{type: String},
-    user_id:{type: String, required: true, unique: true},
-    nick_name:{type: String},
-    pw:{type: String},
-    profile_image: {type: String, default: "http://iwin247.net:3000/img/user/default"},
+  id:{type: Number},
+  token:{type: String},
+  user_id:{type: String, required: true, unique: true},
+  nick_name:{type: String},
+  pw:{type: String},
+  profile_image: {type: String, default: "http://iwin247.net:3000/img/user/default"},
 
-    favorit: [String],
+  favorit: [String],
 
-    visit: [{
-       name: {type: String},
-       name_eng: {type: String},
-       img_url: {type: String},
-       star: {type: Number, max: 5}
-    }]
+  visit: [{
+     name: {type: String},
+     name_eng: {type: String},
+     img_url: {type: String},
+     star: {type: Number, max: 5}
+  }]
 });
 
 var TourSchema = new mongoose.Schema({
@@ -40,6 +40,7 @@ var TourSchema = new mongoose.Schema({
    restaurant: {type: String},
    tag: [String],
    board_ids: [String],
+   like: {type: Number, default: 0}
 });
 
 var BoardSchema = new mongoose.Schema({
@@ -59,9 +60,15 @@ var BoardSchema = new mongoose.Schema({
   }]
 });
 
+var RecommendSchema = new mongoose.Schema({
+  date: {type: String, unique: true},
+  list: [String]
+});
+
 Users = mongoose.model('users', UserSchema);
 Board = mongoose.model('boards', BoardSchema);
 Tour = mongoose.model('tourists', TourSchema);
+Recommend = mongoose.model('recommeds', RecommendSchema);
 
 var routes = require('./routes/index');
 var search = require('./routes/search');
@@ -69,7 +76,9 @@ var users = require('./routes/users');
 var board = require('./routes/board');
 var auth = require('./routes/auth');
 var cate = require('./routes/cate');
+var main = require('./routes/main');
 var info = require('./routes/info');
+var tour = require('./routes/tour');
 var img = require('./routes/img');
 
 var app = express();
@@ -93,6 +102,8 @@ app.use('/search', search);
 app.use('/auth', auth);
 app.use('/cate', cate);
 app.use('/info', info);
+app.use('/main', main);
+app.use('/tour', tour);
 app.use('/img', img);
 
 // catch 404 and forward to error handler
