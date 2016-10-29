@@ -326,8 +326,8 @@
 
 > Response
 
-    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
-
+    HTTP 200 : send tour and boards
+    
     HTTP 409 : DB Error 
     
  * POST /tour/like
@@ -340,7 +340,7 @@
 
 > Response
 
-    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
+    HTTP 200 : su
 
     HTTP 409 : DB Error 
 
@@ -354,7 +354,7 @@
 
 > Response
 
-    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
+    HTTP 200 : su
 
     HTTP 409 : DB Error 
     
