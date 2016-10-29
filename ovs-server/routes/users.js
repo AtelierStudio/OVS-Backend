@@ -44,11 +44,26 @@ var upload = function (req, res) {
 
 router.post('/getInfo', function(req, res) {
     var token = req.body.token;
-    Users.find({token: token}, function(err, user){
+    var tours = [];
+
+    Users.findOne({token: token}, function(err, user){
         if(err) res.sendStatus(405);
         if(user){
-            
-             res.status(200).send(user);
+             Tour.find({}, function(err, tour){
+               if(err) return res.status(409).send("DB error");
+               if(tour){
+                 for (var i = 0; i < user.favorit.length; i++) {
+                   for (var j = 0; j < tour.length; j++) {
+                      if(user.favorit[i] == tour[j].id){
+                        tours.push(tour[j]);
+                        break;
+                      }
+                   }
+                 }
+
+                 return res.status(200).json({nick_name: user.nick_name, profile_image: user.profile_image, favorit: tours, visit: user.visit});
+               }
+             });
         }else{
              res.status(412).send("no user");
         }
