@@ -309,6 +309,14 @@
 
     HTTP 400 : DB Error 
     
+* POST /main
+
+> Response
+
+    HTTP 200 : best(best place 최고의 달성 장소): [String Array] , month(monthly recommend place 이달의 추천 장소): [String Array]
+
+    HTTP 400 : DB Error 
+    
 ### User
 > id: user inherence id [Number]
 
