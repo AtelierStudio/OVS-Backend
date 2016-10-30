@@ -19,6 +19,7 @@ var UserSchema = new mongoose.Schema({
   favorit: [String],
 
   visit: [{
+     id: {type: String},
      name: {type: String},
      name_eng: {type: String},
      img_url: {type: String},
@@ -79,6 +80,7 @@ var cate = require('./routes/cate');
 var main = require('./routes/main');
 var info = require('./routes/info');
 var tour = require('./routes/tour');
+var getimg = require('./routes/getimg');
 var img = require('./routes/img');
 
 var app = express();
@@ -105,6 +107,7 @@ app.use('/info', info);
 app.use('/main', main);
 app.use('/tour', tour);
 app.use('/img', img);
+app.use('/getimg', getimg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
