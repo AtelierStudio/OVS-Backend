@@ -246,7 +246,22 @@
 
     HTTP 400 : DB Error 
     
+* POST /board/addCommant
 
+> Params
+
+    token: writer token
+    
+    boardid: where user writed in
+    
+    summary: commant
+ 
+
+> Response
+
+    HTTP 200 : send board
+
+    HTTP 400 : DB Error 
 
 * POST /board/like
 
