@@ -21,7 +21,7 @@ var upload = function(req, res) {
 
                 cb(null, file.uploadedFile.name + '.' + file.uploadedFile.ext);
             } else {
-                return res.sendStatus(412);
+                return res.status(412).send("u send wrong file");
             }
         }
     });
@@ -83,17 +83,11 @@ router.post('/setProfile', function(req, res) {
     upload(req, res).then(function(file) {
         var token = req.body.token;
 
-        Users.update({
-            token: token
-        }, {
-            profile_image: "http://iwin247.net:3000/img/user/" + token
-        }, function(err, result) {
+        Users.update({token: token}, {profile_image: "http://iwin247.net:3000/img/user/" + token}, function(err, result) {
             if (err) return res.status(406).send("DB error");
             else {
-                Users.findOne({
-                    token: token
-                }, function(err, user) {
-                    if (err) return res.sendStatus(412);
+                Users.findOne({token: token}, function(err, user) {
+                    if (err) return res.status(412).send("DB ERROR");
                     if (user) return res.status(200).send(user);
                 });
             }
