@@ -19,6 +19,7 @@ var UserSchema = new mongoose.Schema({
   favorit: [String],
 
   visit: [{
+     id: {type: String},
      name: {type: String},
      name_eng: {type: String},
      img_url: {type: String},

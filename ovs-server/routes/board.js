@@ -71,7 +71,7 @@ router.post('/write', function(req, res) {
                           if(err) res.status(409).send("DB error");
                           else{
                             Tour.findOne({id: tourid}, function(err, tours){
-                              Users.update({token: token}, {$push: {visit: {name: tours.name, name_eng: tours.name_eng, img_url: tours.img_url}}}, function(err, results){
+                              Users.update({token: token}, {$push: {visit: {id: tours.id, name: tours.name, name_eng: tours.name_eng, img_url: tours.img_url}}}, function(err, results){
                                 if(err) res.status(409).send("DB error");
                                 else res.status(200).send(board);
                               });
